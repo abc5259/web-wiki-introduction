@@ -17,3 +17,30 @@ console.log(
 );
 
 console.log("알맞은 스크립트를 작성하세요");
+
+const commentForm = document.getElementById("comment-form");
+const commentList = document.getElementsByClassName("comment-list");
+
+commentForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const commentInput = e.target["comment"];
+  commentList[0].innerHTML =
+    commentList[0].innerHTML +
+    `
+    <li>
+              <div class="comment-item">
+                <div class="comment-author">
+                  <img
+                    src="./images/comment-author-icon.png"
+                    alt="사용자 프로필 이미지"
+                  />
+                  <span>방문자</span>
+                </div>
+                <div class="comment-content">
+                  ${commentInput.value}
+                </div>
+              </div>
+            </li>
+  `;
+  commentInput.value = "";
+});
